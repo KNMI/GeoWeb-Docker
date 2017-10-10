@@ -71,5 +71,6 @@ RUN mkdir -p /adaguc/basedir/-
 
 ENTRYPOINT /adaguc/start.sh
  
-#docker build -t test . && docker run -e EXTERNALADDRESS="http://127.0.0.1:8080/" -p 8080:8080 -v $HOME/data:/data -it test 
-# You can copy NetCDF's / GeoJSONS to your hosts ~/data directory. This will be served through adaguc-server, via the source=<filename> key value pair. testdata.nc is copied there by default. See example URL above.
+#docker build -t adaguc-server . 
+#docker run -e EXTERNALADDRESS="http://127.0.0.1:8080/" -p 8080:8080 -v $HOME/data:/data -it adaguc-server 
+# You can copy NetCDF's / GeoJSONS to your hosts ~/data directory. This will be served through adaguc-server, via the source=<filename> key value pair. testdata.nc is copied there by default. 
