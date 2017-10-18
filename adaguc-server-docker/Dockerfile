@@ -58,7 +58,8 @@ COPY adaguc-services-config.xml /adaguc/adaguc-services-config.xml
 ENV ADAGUC_SERVICES_CONFIG=/adaguc/adaguc-services-config.xml 
 
 # Set up data dir, this is also configured in adaguc-server-config.xml
-RUN mkdir /data/
+RUN mkdir -p /data/adaguc-autowms
+RUN mkdir -p /data/adaguc-datasets
 
 EXPOSE 8080
 
@@ -73,4 +74,6 @@ ENTRYPOINT /adaguc/start.sh
  
 #docker build -t adaguc-server . 
 #docker run -e EXTERNALADDRESS="http://127.0.0.1:8080/" -p 8080:8080 -v $HOME/data:/data -it adaguc-server 
+#Check http://localhost:8080/adaguc-services/wms.cgi?service=wms&request=getcapabilities
+
 # You can copy NetCDF's / GeoJSONS to your hosts ~/data directory. This will be served through adaguc-server, via the source=<filename> key value pair. testdata.nc is copied there by default. 
