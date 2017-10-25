@@ -8,6 +8,8 @@ RUN mv GeoWeb-BackEnd-master geoweb-backend
 WORKDIR /src/geoweb-backend/
 RUN mvn package
 RUN cp ./target/geoweb-backend-*.jar /src/geoweb-backend.jar
+RUN mkdir -p /tmp/admin/locations/
+COPY defaultstore/admin/locations/locations.dat /tmp/admin/locations/locations.dat
 ENV JAVA_OPTS=""
 EXPOSE 8080
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /src/geoweb-backend.jar" ]
