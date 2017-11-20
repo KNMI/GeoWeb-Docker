@@ -1,0 +1,11 @@
+FROM nginx
+COPY dist /usr/share/nginx/html
+
+# Set the command to start the node server.
+CMD echo "export const BACKEND_SERVER_URL = '${GEOWEBBACKENDURL}';export const WEBSERVER_URL = '${WEBSERVER_URL}';" > usr/share/nginx/html/urls.js \
+  && nginx -g 'daemon off;'
+  
+#docker build -t geoweb-frontend-nginx .
+#docker run -e GEOWEBBACKENDURL="http://127.0.0.1:8080/" -p 8080:80 -it geoweb-frontend-nginx
+
+# docker run -e GEOWEBBACKENDURL="http://knmi-geowh-l01t" -p 8080:80 -d geoweb-frontend-nginx
