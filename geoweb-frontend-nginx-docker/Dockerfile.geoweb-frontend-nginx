@@ -2,10 +2,15 @@ FROM nginx
 COPY dist /usr/share/nginx/html
 
 # Set the command to start the node server.
-CMD echo "export const BACKEND_SERVER_URL = '${GEOWEBBACKENDURL}';export const WEBSERVER_URL = '${WEBSERVER_URL}';" > usr/share/nginx/html/urls.js \
+CMD echo "{ \
+  \"BACKEND_SERVER_URL\": \"${GEOWEBBACKENDURL}\", \
+  \"WEBSERVER_URL\": \"${WEBSERVER_URL}\", \
+  \"BACKEND_SERVER_XML2JSON\": \"${GEOWEBBACKENDURL}/XML2JSON?\" \
+}" > usr/share/nginx/html/urls.json \
   && nginx -g 'daemon off;'
   
 #docker build -t geoweb-frontend-nginx .
-#docker run -e GEOWEBBACKENDURL="http://127.0.0.1:8080/" -p 8080:80 -it geoweb-frontend-nginx
+
+# docker run -e GEOWEBBACKENDURL="http://birdexp07.knmi.nl:8080" -e WEBSERVER_URL="http://localhost:18080/" -p 18080:80 -it geoweb-frontend-nginx
 
 # docker run -e GEOWEBBACKENDURL="http://knmi-geowh-l01t" -p 8080:80 -d geoweb-frontend-nginx
