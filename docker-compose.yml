@@ -5,28 +5,29 @@ services:
         image: geoweb-backend
         container_name: geoweb-backend
         ports: 
-            - "8080:8080"
+            - "3380:8080"
     geoweb-frontend-nginx :
         image: geoweb-frontend-nginx 
         container_name: geoweb-frontend-nginx 
         ports: 
-            - "8083:5000"
+            - "3383:80"
         environment:
-            - "GEOWEBBACKENDURL=http://127.0.0.1:8080/" 
+            - "GEOWEBBACKENDURL=http://127.0.0.1:3380/" 
+            - "WEBSERVER_URL=http://localhost:3383/"
     adaguc-server:
         image: adaguc-server
         container_name: adaguc-server
         ports: 
-            - "8082:8080"
+            - "3382:8080"
         volumes:
             - $HOME/data/adaguc-datasets:/data/adaguc-datasets
             - $HOME/data/adaguc-autowms:/data/adaguc-autowms
         environment:
-            - "EXTERNALADDRESS=http://127.0.0.1:8082/"
+            - "EXTERNALADDRESS=http://127.0.0.1:3382/"
     adaguc-viewer:
         image: adaguc-viewer
         container_name: adaguc-viewer
         ports: 
-            - "8081:80"
+            - "3381:80"
 
 # Visit http://localhost:8083/#/ for GeoWeb-FrontEnd
