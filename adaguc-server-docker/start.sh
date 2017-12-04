@@ -20,7 +20,7 @@ fi
 
 echo "Checking POSTGRESQL DB" && \
     runuser -l postgres -c "psql postgres -c \"show data_directory;\"" && \
-    echo "Creating DIRS" && \    
+    echo "Creating directories" && \
     cp /adaguc/adaguc-server-master/data/datasets/testdata.nc /data/adaguc-autowms && \
     cp /adaguc/adaguc-server-master/data/config/datasets/baselayers.xml /data/adaguc-datasets && \
     cp /adaguc/adaguc-server-master/data/config/datasets/dataset_a.xml /data/adaguc-datasets && \
