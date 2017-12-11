@@ -10,3 +10,4 @@ docker rm -f extract
 echo Building nginx runner
 docker build --no-cache -t geoweb-frontend-nginx . -f Dockerfile.geoweb-frontend-nginx
 rm -r dist
+docker save -o geoweb-frontend-nginx.dockerimage geoweb-frontend-nginx
