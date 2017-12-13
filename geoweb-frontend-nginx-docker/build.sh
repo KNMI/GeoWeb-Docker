@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Building build env"
 
-docker build -t nodebuild . -f Dockerfile.nodebuild
+docker build --no-cache -t nodebuild . -f Dockerfile.nodebuild
 #
 docker create --name extract nodebuild
 docker cp extract:/frontend/geoweb-frontend/dist dist
