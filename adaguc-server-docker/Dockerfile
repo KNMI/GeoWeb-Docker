@@ -27,8 +27,6 @@ RUN yum update -y && yum install -y \
     logrotate \
     cronie
 
-RUN chkconfig enable on
-         
 RUN mkdir /adaguc
 
 WORKDIR /adaguc
