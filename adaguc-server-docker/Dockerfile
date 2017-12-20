@@ -78,6 +78,8 @@ RUN mkdir -p /adaguc/basedir/
 RUN mkdir -p /var/log/adaguc/ 
 COPY adaguc-server-logrotate /etc/logrotate.d/adaguc
 
+COPY adaguc-server-updatedatasets.sh /adaguc/
+RUN chmod +x /adaguc/adaguc-server-updatedatasets.sh
 
 ENTRYPOINT /adaguc/start.sh
  
