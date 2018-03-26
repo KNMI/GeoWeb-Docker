@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:8
 ENV NPM_CONFIG_LOGLEVEL warn
 WORKDIR /frontend
 ADD  https://github.com/KNMI/GeoWeb-FrontEnd/archive/master.tar.gz geoweb-frontend.tar.gz
@@ -10,5 +10,5 @@ RUN npm install
 RUN npm run clean 
 RUN echo "{\"version\": \"sprint_0.XX.Y\",\"commit_id\":\"`git ls-remote https://github.com/KNMI/GeoWeb-FrontEnd.git rev-parse HEAD | awk '{print $1}'`\" }" >  /frontend/geoweb-frontend/config/config.json
 
-RUN npm run deploy:prod
+RUN npm run deploy:prod-quick
 
