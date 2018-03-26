@@ -40,7 +40,7 @@ RUN runuser -l postgres -c "initdb -D /postgresql"
 
 # Install adaguc-services
 WORKDIR /adaguc
-RUN curl -L https://github.com/maartenplieger/adaguc-services/archive/master.tar.gz > adaguc-services.tar.gz
+ADD  https://github.com/KNMI/adaguc-services/archive/master.tar.gz  /adaguc/adaguc-services.tar.gz
 RUN tar xvf adaguc-services.tar.gz
 WORKDIR /adaguc/adaguc-services-master
 RUN mvn package
@@ -53,7 +53,6 @@ ADD  https://github.com/KNMI/adaguc-server/archive/master.tar.gz /adaguc/adaguc-
 RUN tar xvf adaguc-server.tar.gz
 WORKDIR /adaguc/adaguc-server-master
 RUN bash compile.sh
-
 
 COPY adaguc-server-config.xml /adaguc/adaguc-server-config.xml
 
